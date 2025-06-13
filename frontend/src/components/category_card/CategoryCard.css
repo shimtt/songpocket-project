@@ -1,0 +1,30 @@
+.category-card {
+  width: 330px;
+  height: 150px;
+  border-radius: 12px;
+  padding: 20px;
+  color: #eeeeee;
+  font-weight: bold;
+  font-size: 1.1rem;
+  cursor: pointer;
+  box-shadow: 0 4px 12px #0000001A;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  transition: transform 0.2s ease-in-out;
+}
+
+/* 카테고리 카드 간격 줄이기 */
+.category-card-link:not(:last-child){
+  margin-right: 20px;
+}
+
+.category-card:hover {
+  transform: scale(1.05);
+}
+
+.category-card-link {
+  text-decoration: none;
+  color: inherit;
+  display: inline-block;
+}

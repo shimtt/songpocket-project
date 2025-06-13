@@ -1,0 +1,49 @@
+.category-container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 40px auto;
+  display: flex;
+  justify-content: space-between;
+}
+
+.category-wrapper {
+  background-color: #eeeeee;
+  padding: 1px 0;
+}
+
+.category-header {
+  width: 1200px;
+  max-width: 90%;
+  margin: 40px auto 20px;
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  font-weight: 700;
+  color: #333;
+  font-size: 1.2rem;
+  letter-spacing: 3px;
+  position: relative;
+}
+
+/* 카테고리 헤더 선 */
+.category-header::before,
+.category-header::after {
+  content: '';
+  display: block;
+  width: 50px;
+  height: 1px;
+  background-color: #f1c40f;
+  margin: 0 12px;
+  flex-grow: 1;
+}
+
+.category-header::before {
+  width: 33%;
+  margin-right: 12px;
+}
+
+.category-header::after {
+  width: 33%;
+  margin-left: 12px;
+}

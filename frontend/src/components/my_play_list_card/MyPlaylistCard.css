@@ -1,0 +1,80 @@
+.card-grid {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+  gap: 20px;
+  margin: 0 auto 0;
+  max-width: 100%;
+  justify-items: center;
+  padding: 5px;
+}
+
+.card-scroll-area {
+  padding: 10px;
+}
+
+.playlist-card {
+  width: 222px;
+  height: 180px;
+  border-radius: 12px;
+  overflow: hidden;
+  background-color: #fff;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  display: flex;
+  flex-direction: column;
+
+  position: relative;
+  transition: transform 0.2s ease;
+}
+
+.playlist-card:hover {
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+  transform: scale(1.03);
+}
+
+.playlist-card img {
+  width: 100%;
+  height: 120px; /* 또는 카드 높이에 맞춰 조정 */
+  object-fit: cover;
+  display: block;
+}
+
+.card-header {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 15px 10px;
+  gap: 70px;
+  margin-top: -15px;
+}
+
+.card-title {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  font-size: 16px;
+  margin-left: 6px;
+  max-width: 100px;
+}
+
+.delete-icon-btn {
+  position: absolute;
+  right: 10px;
+
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #888;
+  font-size: 16px;
+  transition: color 0.2s ease;
+}
+
+.delete-icon-btn:hover {
+  color: #e63946;
+}
+
+.playlist-thumbnail {
+  width: 100%;
+  object-fit: cover;
+  display: block;
+  cursor: pointer;
+}

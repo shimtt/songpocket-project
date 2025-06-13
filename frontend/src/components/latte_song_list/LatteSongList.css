@@ -1,0 +1,122 @@
+/* 테이블 전체 감싸는 박스 */
+.latte-table-wrapper {
+  width: 90%;
+  max-width: 1200px;
+  margin: 12px auto 50px auto;
+  background-color: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border: 1px solid none;
+  overflow-y: auto;
+  font-family: 'Pretendard', sans-serif;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE, Edge */
+}
+
+/* 스크롤바 감추기 */
+.latte-table-wrapper::-webkit-scrollbar {
+  display: none; /* Chrome, Safari */
+}
+
+/* 상단문구 */
+.latte-text {
+  text-align: center;
+  padding: 6px;
+  margin: 58px auto 6px auto;
+  color: rgba(255, 255, 255, 0.7);;
+}
+
+/* 테이블 공통 */
+.latte-table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+
+.latte-table tbody {
+  display: block;
+  height: 465px;
+  overflow-y: auto;
+}
+
+.latte-table tbody::-webkit-scrollbar {
+  display: none;
+}
+
+.latte-table thead,
+.latte-table tbody tr {
+  display: table;
+  width: 100%;
+  table-layout: fixed;
+}
+
+/* 곡명 가수명 width */
+.latte-table thead th:nth-child(2),
+.latte-table tbody td:nth-child(2) {
+  width: 25%;
+}
+
+.latte-table thead th:nth-child(3),
+.latte-table tbody td:nth-child(3) {
+  width: 15%;
+}
+
+/* 듣기 */
+.latte-table thead th:nth-child(6),
+.latte-table tbody td:nth-child(6) {
+  width: 50px;
+}
+
+/* 담기 */
+.latte-table thead th:nth-child(7),
+.latte-table tbody td:nth-child(7) {
+  width: 50px;
+}
+
+/* thead 고정 */
+.latte-table thead th {
+  position: sticky;
+  top: 0;
+  background-color: #f1c40f;
+  padding: 12px;
+  font-weight: bold;
+  text-align: center;
+  color: #333;
+  border-bottom: 1px solid #ccc;
+  z-index: 5;
+  white-space: nowrap;
+}
+
+/* tbody 셀 */
+.latte-table tbody td {
+  padding: 10px 12px;
+  text-align: center;
+  border-bottom: 1px solid #eee;
+  color: #333;
+}
+
+/* hover 효과 */
+.latte-table tbody tr:hover {
+  background-color: #c5c5c5;
+  transition: background-color 0.2s ease-in-out;
+}
+
+/* 아이콘 스타일 */
+.play-button, 
+.add-icon {
+  text-decoration: none;
+  color: inherit;
+  display: inline-block;
+  font-size: 1.3rem;
+  transition: transform 0.2s ease-in-out, color 0.2s;
+}
+
+.play-button:hover {
+  transform: scale(1.5);
+  color: #e74c3c;
+}
+
+.add-icon:hover {
+  transform: scale(1.3);
+  color: #5098d1;
+}
