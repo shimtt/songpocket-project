@@ -34,7 +34,7 @@ router.get('/:uuid', async (req, res) => {
 
   try {
     // 장르별 개수 세기
-    const genreCounts = await LatteSong.findAll({
+    const genreCounts = await Playlist.findAll({
       attributes: [
         'genre',
         [Sequelize.fn('COUNT', Sequelize.col('genre')), 'count']
@@ -55,7 +55,7 @@ router.get('/:uuid', async (req, res) => {
     const topGenre = genreCounts[0].genre;
 
     // 해당 장르 기준 추천곡 가져오기
-    const songs = await Playlist.findAll({
+    const songs = await LatteSong.findAll({
       where: {
         genre: topGenre,
         uuid: { [Op.ne]: uuid } // 추천 대상은 자기 플레이리스트 제외
@@ -67,8 +67,6 @@ router.get('/:uuid', async (req, res) => {
       limit: 1,
       raw: true
     });
-
-    console.log('🔥 추천 후보:', songs);
 
     res.json(songs);
   } catch (err) {
