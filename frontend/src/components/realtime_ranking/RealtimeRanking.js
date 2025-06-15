@@ -157,7 +157,10 @@ const RealtimeRanking = ({ playlist, setPlaylist }) => {
       });
   }, [selectedPlayListId, showModal]); // showModal 변경 시에도 새로 불러옴  
 
+  // 유튜브 TOP100 호출
   useEffect(() => {
+    console.log('REACT_APP_API_BASE:', process.env.REACT_APP_API_BASE);
+
     fetch(`${process.env.REACT_APP_API_BASE}/api/youtube`)
       .then(res => res.json())
       .then(data => {
