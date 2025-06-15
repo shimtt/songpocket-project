@@ -17,7 +17,8 @@ router.get('/popular', async (req, res) => {
       group: ['title', 'artist', 'youtubeUrl', 'youtubeThumbnail'],
       having: Sequelize.literal('COUNT(title) >= 2'), // 최소 2곡이상 담긴 곡
       order: [[Sequelize.literal('count'), 'DESC']],
-      limit: 1
+      limit: 1,
+      raw: true
     });
 
     res.json(popularSongs);
