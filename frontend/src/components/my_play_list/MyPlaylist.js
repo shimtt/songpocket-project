@@ -68,7 +68,6 @@ const MyPlaylist = ({ playlist, setPlaylist }) => {
     } else {
       axios.get(`${process.env.REACT_APP_API_BASE}/api/playlists/${selectedPlaylistId}/${uuid}`)
         .then(res => {
-          console.log('내 서버 저장곡:', res.data);
           setCurrentPlaylist(res.data);
           setPlaylist(res.data);
         })
