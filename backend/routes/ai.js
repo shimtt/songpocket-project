@@ -71,9 +71,10 @@ router.get('/:uuid', async (req, res) => {
     const songs = await LatteSong.findAll({
       where: {
         genre: topGenre,
-        [Op.and]: [
-          { [Op.not]: { [Op.or]: excludeConditions } }
-        ]
+        uuid: 'default',
+        [Op.not]: {
+          [Op.or]: excludeConditions
+        }
       },
       // order: [['viewCount', 'DESC']],
       order: [
