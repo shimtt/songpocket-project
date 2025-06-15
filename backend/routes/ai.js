@@ -54,11 +54,24 @@ router.get('/:uuid', async (req, res) => {
 
     const topGenre = genreCounts[0].genre;
 
+    // 내가 담은곡 리스트 추출(title + artist)
+    const mySongs = await Playlist.findAll({
+      where: { uuid },
+      attributes: ['title', 'artist'],
+      raw: true
+    });
+
+    // 제외 조건 구성
+    const excludeConditions = mySongs.map(song => ({
+      title: song.title,
+      artist: song.artist
+    }));
+
     // 해당 장르 기준 추천곡 가져오기
     const songs = await LatteSong.findAll({
       where: {
         genre: topGenre,
-        uuid: { [Op.ne]: uuid } // 추천 대상은 자기 플레이리스트 제외
+        [Op.not]: Sequelize.or(excludeConditions) // 추천 대상은 자기 플레이리스트 제외
       },
       // order: [['viewCount', 'DESC']],
       order: [
