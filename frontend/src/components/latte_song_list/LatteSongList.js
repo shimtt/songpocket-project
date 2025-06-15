@@ -67,8 +67,8 @@ const LatteSongList = ({ handleAiRefresh }) => {
     };
   
     const url = selectedPlayListId === 1
-      ? `${process.env.REACT_APP_API_BASE}/api/playlists/default/${uuid}`
-      : `${process.env.REACT_APP_API_BASE}/api/playlists/custom`;
+      ? `${process.env.REACT_APP_API_BASE}/playlists/default/${uuid}`
+      : `${process.env.REACT_APP_API_BASE}/playlists/custom`;
   
     const data = selectedPlayListId === 1
       ? payload
