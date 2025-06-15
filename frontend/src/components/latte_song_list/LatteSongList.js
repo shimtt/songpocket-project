@@ -67,8 +67,8 @@ const LatteSongList = ({ handleAiRefresh }) => {
     };
   
     const url = selectedPlayListId === 1
-      ? `${process.env.REACT_APP_API_BASE}/playlists/default/${uuid}`
-      : `${process.env.REACT_APP_API_BASE}/playlists/custom`;
+      ? `${process.env.REACT_APP_API_BASE}/api/playlists/default/${uuid}`
+      : `${process.env.REACT_APP_API_BASE}/api/playlists/custom`;
   
     const data = selectedPlayListId === 1
       ? payload
@@ -122,7 +122,7 @@ const LatteSongList = ({ handleAiRefresh }) => {
 
   // DB에서 곡 불러오기
   useEffect(() => {
-    axios.get(`${process.env.REACT_APP_API_BASE}/songs`)
+    axios.get(`${process.env.REACT_APP_API_BASE}/api/songs`)
       .then(response => {
         const all = response.data;
         setSongs(all);
@@ -137,7 +137,7 @@ const LatteSongList = ({ handleAiRefresh }) => {
   useEffect(() => {
     const uuid = getOrCreateUUID();
 
-    axios.get(`${process.env.REACT_APP_API_BASE}/playlisttables/${uuid}`)
+    axios.get(`${process.env.REACT_APP_API_BASE}/api/playlisttables/${uuid}`)
       .then(res => {
         setPlaylistTables(res.data);
       })
