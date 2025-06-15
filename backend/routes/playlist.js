@@ -270,4 +270,26 @@ router.delete('/', async (req, res) => {
   }
 });
 
+// 플레이리스트 이름 수정
+router.put('/:id', async (req, res) => {
+  const { id } = req.params;
+  const { title } = req.body;
+
+  try {
+    const updated = await PlaylistTable.update(
+      { title },
+      { where: id }
+    );
+
+    if (updated[0] === 0) {
+      return res.status(404).json({ message: '플레이리스트를 찾을 수 없습니다.' });
+    }
+
+    res.json({ message: '플레이리스트 수정 완료' });
+  } catch (err) {
+    console.error('플레이리스트 수정 실패:', err);
+    res.status(500).json({ message: '서버 오류' });
+  }
+})
+
 module.exports = router;
