@@ -170,8 +170,8 @@ const LatteSongList = ({ handleAiRefresh }) => {
                   로딩 중입니다...
                 </td>
               </tr>
-            ) : (
-            {visibleSongs.map((song, index) => (
+            ) : 
+            visibleSongs.map((song, index) => (
               <tr key={song.id}>
                 <td>{index + 1}</td>
                 <td>{song.title}</td>
