@@ -10,7 +10,6 @@ router.get('/popular', async (req, res) => {
       attributes: [
         'title',
         'artist',
-        'genre',
         'youtubeUrl',
         'youtubeThumbnail',
         [Sequelize.fn('COUNT', Sequelize.col('title')), 'count']
