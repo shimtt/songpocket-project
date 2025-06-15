@@ -122,7 +122,7 @@ const LatteSongList = ({ handleAiRefresh }) => {
 
   // DB에서 곡 불러오기
   useEffect(() => {
-    axios.get(`${process.env.REACT_APP_API_BASE}/api/songs`)
+    axios.get(`${process.env.REACT_APP_API_BASE}/songs`)
       .then(response => {
         const all = response.data;
         setSongs(all);
