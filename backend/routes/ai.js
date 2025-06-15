@@ -71,7 +71,9 @@ router.get('/:uuid', async (req, res) => {
     const songs = await LatteSong.findAll({
       where: {
         genre: topGenre,
-        [Op.not]: Sequelize.or(excludeConditions) // 추천 대상은 자기 플레이리스트 제외
+        [Op.not]: {
+          [Op.or]: excludeConditions
+        }
       },
       // order: [['viewCount', 'DESC']],
       order: [
