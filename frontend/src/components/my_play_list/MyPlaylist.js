@@ -191,11 +191,6 @@ const MyPlaylist = ({ playlist, setPlaylist }) => {
                   className="modal-input" 
                   value={playlistTitle}
                   onChange={(e) => setPlaylistTitle(e.target.value)}
-                  onKeyDown={(e) => {
-                    if (e.key === 'Enter') {
-                      handleAddPlaylist();
-                    }
-                  }}
                 />
                 <button className="modal-confirm" onClick={handleAddPlaylist}>등록</button>
                 <button className="modal-close" onClick={() => setIsModalOpen(false)}>닫기</button>
