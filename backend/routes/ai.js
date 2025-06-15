@@ -48,6 +48,7 @@ router.get('/:uuid', async (req, res) => {
       limit: 1
     });
 
+    console.log('🎯 topGenre:', genreCounts);
     if (genreCounts.length === 0){
       return res.json([]); // 장르가 없다면 빈 배열
     }
