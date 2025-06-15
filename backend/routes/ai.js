@@ -63,8 +63,10 @@ router.get('/:uuid', async (req, res) => {
 
     // 제외 조건 구성
     const excludeConditions = mySongs.map(song => ({
-      title: song.title,
-      artist: song.artist
+      [Op.and]: [
+        { title: song.title },
+        { artist: song.artist }
+      ]
     }));
 
     // 해당 장르 기준 추천곡 가져오기
