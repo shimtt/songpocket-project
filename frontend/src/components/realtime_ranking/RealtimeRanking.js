@@ -159,8 +159,6 @@ const RealtimeRanking = ({ playlist, setPlaylist }) => {
 
   // 유튜브 TOP100 호출
   useEffect(() => {
-    console.log('REACT_APP_API_BASE:', process.env.REACT_APP_API_BASE);
-
     fetch(`${process.env.REACT_APP_API_BASE}/api/youtube`)
       .then(res => res.json())
       .then(data => {
@@ -169,6 +167,7 @@ const RealtimeRanking = ({ playlist, setPlaylist }) => {
       })
       .catch(err => console.error('유튜브 Top100 API 호출 실패:', err));
 
+    console.log('REACT_APP_API_BASE:', process.env.REACT_APP_API_BASE);
     axios.get(`${process.env.REACT_APP_API_BASE}/api/playlisttables/${uuid}`)
       .then(res => {
         const lists = res.data;
