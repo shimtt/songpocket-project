@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const { Playlist, Sequelize } = require('../models');
+const { Playlist, LatteSong, Sequelize } = require('../models');
 const { Op } = Sequelize;
 
 // 많이 담긴 곡 추천
@@ -34,7 +34,7 @@ router.get('/:uuid', async (req, res) => {
 
   try {
     // 장르별 개수 세기
-    const genreCounts = await Playlist.findAll({
+    const genreCounts = await LatteSong.findAll({
       attributes: [
         'genre',
         [Sequelize.fn('COUNT', Sequelize.col('genre')), 'count']
@@ -64,7 +64,7 @@ router.get('/:uuid', async (req, res) => {
       order: [
         [Sequelize.cast(Sequelize.col('viewCount'), 'UNSIGNED'), 'DESC']
       ],
-      limit: 5,
+      limit: 1,
       raw: true
     });
 
