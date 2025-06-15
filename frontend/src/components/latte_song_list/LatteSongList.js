@@ -137,7 +137,7 @@ const LatteSongList = ({ handleAiRefresh }) => {
   useEffect(() => {
     const uuid = getOrCreateUUID();
 
-    axios.get(`${process.env.REACT_APP_API_BASE}/api/playlisttables/${uuid}`)
+    axios.get(`${process.env.REACT_APP_API_BASE}/playlisttables/${uuid}`)
       .then(res => {
         setPlaylistTables(res.data);
       })
