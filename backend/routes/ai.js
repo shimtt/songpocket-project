@@ -61,8 +61,11 @@ router.get('/:uuid', async (req, res) => {
         uuid: { [Op.ne]: uuid } // 추천 대상은 자기 플레이리스트 제외
       },
       order: [['viewCount', 'DESC']],
-      limit: 1
+      limit: 5,
+      raw: true
     });
+
+    console.log('🔥 추천 후보:', songs);
 
     res.json(songs);
   } catch (err) {
