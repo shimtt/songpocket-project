@@ -48,7 +48,6 @@ router.get('/:uuid', async (req, res) => {
       limit: 1
     });
 
-    console.log('🎯 topGenre:', genreCounts);
     if (genreCounts.length === 0){
       return res.json([]); // 장르가 없다면 빈 배열
     }
@@ -61,7 +60,10 @@ router.get('/:uuid', async (req, res) => {
         genre: topGenre,
         uuid: { [Op.ne]: uuid } // 추천 대상은 자기 플레이리스트 제외
       },
-      order: [['viewCount', 'DESC']],
+      // order: [['viewCount', 'DESC']],
+      order: [
+        [Sequelize.cast(Sequelize.col('viewCount'), 'UNSIGNED'), 'DESC']
+      ],
       limit: 5,
       raw: true
     });
