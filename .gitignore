@@ -8,8 +8,11 @@ build/
 dist/
 
 # Python
+.venv/
 **/venv/
+**/chromedriver.exe
 __pycache__/
+*.pyc
 
 # Env files
 .env

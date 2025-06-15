@@ -2,8 +2,23 @@
 
 // 설정된 app 가져오기(app.js)
 const app = require('./app')
+const db = require('./models')
 const port = 4000;
 
-app.listen(port, () => {
-  console.log(`서버 실행 중! http://localhost:${port}`)
-});
+// 로컬만
+// app.listen(port, () => {
+//   console.log(`서버 실행 중! http://localhost:${port}`)
+// });
+
+// railway DB
+db.sequelize.sync({ force:false })
+  .then(() => {
+    console.log('DB sync 완료');
+
+    app.listen(port, () => {
+      console.log(`서버 실행 중! http://localhost:${port}`);
+    });
+  })
+  .catch((err) => {
+    console.error('DB sync 실패:', err);
+  });

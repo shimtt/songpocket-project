@@ -1,10 +1,10 @@
 {
   "development": {
-    "username": "latteuser",
-    "password": "latteuser",
-    "database": "latte",
-    "host": "127.0.0.1",
-    "port": 3306,
-    "dialect": "mariadb"
+    "use_env_variable": "DATABASE_URL",
+    "dialect": "mysql"
+  },
+  "production": {
+    "use_env_variable": "DATABASE_URL",
+    "dialect": "mysql"
   }
 }
