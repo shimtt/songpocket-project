@@ -1,5 +1,9 @@
 // 서버 실행만 담당
 
+if (process.env.NODE_ENV !== 'production') {
+  require('dotenv').config(); // 로컬에서만 .env 로드
+}
+
 // 설정된 app 가져오기(app.js)
 const app = require('./app')
 const db = require('./models')

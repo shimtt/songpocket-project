@@ -23,7 +23,7 @@ const parseChannelInfo = (channelRaw) => {
   return { artist, views, uploaded };
 };
 
-const RealtimeRanking = ({ playlist, setPlaylist }) => {
+const RealtimeRanking = ({ playlist, setPlaylist, setIsWakingUp }) => {
   const [songs, setSongs] = useState([]); // 유튜브 인기곡 목록
   const [showModal, setShowModal] = useState(false); // 모달창
   const [selectedPlayListId, setSelectedPlaylistId] = useState(1); // 기본 플레이리스트
@@ -159,18 +159,22 @@ const RealtimeRanking = ({ playlist, setPlaylist }) => {
 
   // 유튜브 TOP100 호출
   useEffect(() => {
-    fetch(`${process.env.REACT_APP_API_BASE}/api/youtube`)
+    
+    // fetch 요청
+    const fetchYoutube = fetch(`${process.env.REACT_APP_API_BASE}/api/youtube`)
       .then(res => res.json())
       .then(data => {
         setSongs(data);
         setSelectedSong(data[0]);
       })
-      .catch(err => console.error('유튜브 Top100 API 호출 실패:', err));
+      .catch(err => {
+        console.error('유튜브 Top100 API 호출 실패:', err);
+      });
 
-    axios.get(`${process.env.REACT_APP_API_BASE}/api/playlisttables/${uuid}`)
+    // axios 요청
+    const fetchPlaylistTables = axios.get(`${process.env.REACT_APP_API_BASE}/api/playlisttables/${uuid}`)
       .then(res => {
         const lists = res.data;
-
         const fullList = [
           { id: 1, title: '기본 플레이리스트', uuid},
           ...lists
@@ -179,7 +183,11 @@ const RealtimeRanking = ({ playlist, setPlaylist }) => {
       })
       .catch(err => {
         console.error('사용자 플레이리스트 목록 불러오기 실패:', err);
-      })
+      });
+
+      // 슬립모드 해제(데이터 로드 완료 후)
+      Promise.allSettled([fetchYoutube, fetchPlaylistTables])
+        .finally(() => setIsWakingUp(false));
   }, []);
 
   return (
