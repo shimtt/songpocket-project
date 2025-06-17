@@ -2,18 +2,36 @@
   position: fixed;
   top: 0;
   left: 0;
-  width: 100vw;
-  height: 100vh;
-  background-color: rgba(0, 0, 0, 0.7);
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.85); /* 어두운 반투명 */
   display: flex;
   justify-content: center;
   align-items: center;
   z-index: 9999;
+  transition: opacity 0.3s ease;
+  font-family: 'Pretendard', sans-serif;
 }
 
 .sleep-message {
-  color: white;
-  font-size: 1.5rem;
   text-align: center;
-  font-family: 'Pretendard', 'Noto Sans KR', sans-serif;
+  font-size: 18px;
+  color: #f0f0f0; /* 밝은 글씨 */
+  line-height: 1.6;
+}
+
+.spinner {
+  width: 48px;
+  height: 48px;
+  margin: 0 auto 18px;
+  border: 5px solid rgba(255, 255, 255, 0.2);
+  border-top: 5px solid #ffffff;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
 }
