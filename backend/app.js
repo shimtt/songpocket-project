@@ -11,6 +11,7 @@ const aIrecommendationRouter = require('./routes/ai');
 const app = express();
 
 // CORS 허용(프론트에서 요청 가능)
+app.options('*', cors()); // preflight 요청 허용
 app.use(cors({
   origin: 'https://songpocket.netlify.app',
   credentials: true,

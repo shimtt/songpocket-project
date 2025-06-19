@@ -18,6 +18,16 @@ function App() {
     return saved ? JSON.parse(saved) : [];
   });
 
+  useEffect(() => {
+    // Render 서버 깨우기용 ping
+    fetch('https://songpocket-project.onrender.com/')
+      .then(() => {
+        console.log("Render 서버 깨우기 완료");
+        setTimeout(() => setIsWakingUp(false), 1000); // 1초 후 overlay 제거
+      })
+      .catch(() => console.warn("Render 서버 ping 실패"));
+  }, []);
+
   // LatteSongList에서 실행할 수 있게(ai추천)
   const handleAiRefresh = () => {
     setAiRefreshTrigger(prev => prev + 1);
