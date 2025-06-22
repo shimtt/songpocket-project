@@ -10,10 +10,21 @@ const aIrecommendationRouter = require('./routes/ai');
 
 const app = express();
 
+const allowedOrigins = [
+  'https://songpocket.netlify.app',
+  'http://localhost:3000' // 로컬 프론트용
+];
+
 // CORS 허용(프론트에서 요청 가능)
 app.use(cors({
-  origin: 'https://songpocket.netlify.app',
-  credentials: true,
+  origin: function(origin, callback) {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error('CORS 오류: 허용되지 않은 origin'));
+    }
+  },
+  credentials: true
 }));
 
 // JSON 요청 파싱(req.body 사용 가능)

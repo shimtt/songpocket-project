@@ -7,7 +7,8 @@ if (process.env.NODE_ENV !== 'production') {
 // 설정된 app 가져오기(app.js)
 const app = require('./app')
 const db = require('./models')
-const port = 4000;
+// const port = 4000;
+const port = process.env.NODE_ENV === 'production' ? process.env.PORT : 4000;
 
 // 로컬만
 // app.listen(port, () => {
