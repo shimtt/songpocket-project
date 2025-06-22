@@ -42,7 +42,6 @@ function App() {
   useEffect(() => {
     fetch('https://songpocket-project.onrender.com/')
       .then(() => {
-        console.log("Render 서버 깨우기 완료");
         setTimeout(() => setIsWakingUp(false), 1000);
       })
       .catch(() => {
