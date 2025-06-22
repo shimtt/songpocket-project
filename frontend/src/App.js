@@ -39,6 +39,18 @@ function App() {
   // uuid 상태추가
   const [uuid, setUUID] = useState('');
 
+  useEffect(() => {
+    fetch('https://songpocket-project.onrender.com/')
+      .then(() => {
+        console.log("Render 서버 깨우기 완료");
+        setTimeout(() => setIsWakingUp(false), 1000);
+      })
+      .catch(() => {
+        console.warn("Render 서버 ping 실패");
+        setIsWakingUp(false);
+      });
+  }, []);
+
   // localstorage에서 uuid 가져오거나 새로 만들기
   useEffect(() => {
     const myUUID = getOrCreateUUID();
