@@ -7,7 +7,7 @@ import './CategoryList.css'
 const CategoryList = ({ aiRefreshTrigger }) => {
   return (
     <div className="category-wrapper">
-      <div className="category-header">라떼 카테고리</div>
+      <div className="category-header">카테고리</div>
       <div className="category-container">
         <CategoryCard color="#f1c40f" to="/realtime">
           실시간 랭킹<br />
